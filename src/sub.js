@@ -1,7 +1,13 @@
 /**
  * Created by KJ on 2016/3/28.
  */
-console.log('HelloWorld');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('HelloWorld');
-console.log('HelloWorld');
+import Button from 'Button';
+
+
+ReactDOM.render(
+    <Button/>,
+    document.getElementById('example')
+);

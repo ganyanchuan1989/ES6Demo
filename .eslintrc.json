@@ -1,4 +1,6 @@
 {
+  //指定解析器parser
+  //"parser": "babel-eslint",
   //环境
   "env": {
     "browser": true,
@@ -12,7 +14,7 @@
   //解析参数
   "parserOptions":{
     "ecmaVersion": 6,//执行ecmascript版本
-    "sourceType": "script",//源码所在位置
+    "sourceType": "module",//源码所在位置
     "ecmaFeatures": {
       "jsx": true,
       "impliedStrict":true//启用严格模式
@@ -28,6 +30,7 @@
   //规则
   "rules": {
     "strict":2
+//    "no-console":2
   }
   //使用ESLint推荐扩展
   //  "extends":"eslint:recommended"

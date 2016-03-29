@@ -1,0 +1,2 @@
+# node_modules下的所有文件不加入版本管理
+/node_modules/*
