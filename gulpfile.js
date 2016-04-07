@@ -64,17 +64,26 @@ gulp.task("webpack:build-dev", function(callback) {
 gulp.task("webpack-dev-server", function(callback) {
     // modify some webpack config options
     var myConfig = Object.create(webpackConfig);
-    myConfig.devtool = "eval";
+    myConfig.devtool = "source-map";
     myConfig.debug = true;
 
+    try{
+        //myConfig.entry.index.unshift("webpack-dev-server/client?http://localhost:8080/");
+        myConfig.entry.index.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+    }catch(e)
+    {
+        console.log(e);
+    }
+    console.log(myConfig.entry.index);
     // Start a webpack-dev-server
     new WebpackDevServer(webpack(myConfig), {
-        publicPath: "/" + myConfig.output.publicPath,
+        hot: true,
+        publicPath: myConfig.output.publicPath,
         stats: {
             colors: true
         }
     }).listen(8080, "localhost", function(err) {
         if(err) throw new gutil.PluginError("webpack-dev-server", err);
-        gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
+        gutil.log("[webpack-dev-server]", "http://localhost:8080/index.html");
     });
 });
