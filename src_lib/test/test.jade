@@ -1,0 +1,12 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="Access-Control-Allow-Origin", content="*")
+        title= htmlWebpackPlugin.options.title
+        script(src='../../build/react.js')
+        script(src='../../build/react-dom.js')
+        script(src='../../dist/libs/HelloLib.js')
+    body
+        h1 HelloLib Library 测试工程
+        div#container
