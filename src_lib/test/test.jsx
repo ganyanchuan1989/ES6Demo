@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button,LinkButton } from 'HelloLib';
-//import LinkButton from '../src/component/LinkButton.jsx';
+import LinkButton from '../src/component/LinkButton.jsx';
 
 
 

@@ -5,6 +5,7 @@
   "env": {
     "browser": true,
     "node":true,
+    "commonjs":true,
     "es6":true
   },
   //全局变量

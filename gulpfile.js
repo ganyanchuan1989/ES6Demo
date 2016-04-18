@@ -66,15 +66,7 @@ gulp.task("webpack-dev-server", function(callback) {
     var myConfig = Object.create(webpackConfig);
     myConfig.devtool = "source-map";
     myConfig.debug = true;
-
-    try{
-        //myConfig.entry.index.unshift("webpack-dev-server/client?http://localhost:8080/");
-        myConfig.entry.index.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
-    }catch(e)
-    {
-        console.log(e);
-    }
-    console.log(myConfig.entry.index);
+    // myConfig.entry.index.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
     // Start a webpack-dev-server
     new WebpackDevServer(webpack(myConfig), {
         hot: true,

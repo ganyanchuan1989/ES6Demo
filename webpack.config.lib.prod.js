@@ -2,7 +2,7 @@
  *  Lib 库打包配置文件
  * Created by KJ on 2016/3/10.
  */
-
+var WebpackCfg = require('./webpack.common.config.js');
 var webpack = require('webpack');
 var path = require('path');
 var config = {
@@ -21,17 +21,9 @@ var config = {
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
-    externals: {'react': 'React', 'react-dom': 'ReactDOM'},
-    module: {
-        loaders: [
-            { test: /\.(js|jsx)$/, loader: "babel" , exclude: /node_modules/},
-            { test: /\.(js|jsx)$/, loader: "eslint", exclude: /node_modules/},
-            { test: /\.jade$/, loader: "jade" },
-            { test: /\.css$/, loader: 'style-loader!css-loader'},
-            { test: /\.less$/, loader:'style-loader!css-loader!less-loader' },
-            { test: /\.json$/, loader: 'file-loader?name=./json/[name].json' },
-            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'url-loader?limit=10000' }
-        ]
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
     },
     plugins: [
         new webpack.NoErrorsPlugin(),
@@ -48,5 +40,7 @@ var config = {
         })
     ]
 };
+
+Object.assign(config,WebpackCfg);
 
 module.exports = config;

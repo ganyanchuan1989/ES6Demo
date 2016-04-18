@@ -1,6 +1,9 @@
 /**
  * Created by KJ on 2016/3/10.
  */
+
+var WebpackCfg = require('./webpack.common.config.js');
+
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -12,49 +15,23 @@ var config = {
             'webpack-dev-server/client?http://localhost:8080',
             'webpack/hot/dev-server',
             'babel-polyfill',//增加Generator函数支持
-            './src/index.js'
-        ],
-        "index_lib":[
-            'webpack-dev-server/client?http://localhost:8080',
-            'webpack/hot/dev-server',
-            'babel-polyfill',//增加Generator函数支持
-            './src_lib/index.jsx'
+            './src/index.jsx'
         ]
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
-        //alias: {
-        //    'CommentBox':path.resolve(__dirname,'src/components/CommentBox.jsx')
-        //}
     },
     output: {
         path: __dirname+"/dist",
         filename: "[name].bundle.js",
         publicPath: "http://localhost:8080/"
     },
-    module: {
-        loaders: [
-            { test: /\.(js|jsx)$/, loader: "babel" , exclude: /node_modules/},
-            { test: /\.(js|jsx)$/, loader: "eslint", exclude: /node_modules/},
-            { test: /\.jade$/, loader: "jade" },
-            { test: /\.css$/, loader: 'style-loader!css-loader'},
-            { test: /\.less$/, loader:'style-loader!css-loader!less-loader' },
-            { test: /\.json$/, loader: 'file-loader?name=./json/[name].json' },
-            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'url-loader?limit=10000' }
-        ]
-    },
     plugins: [
         new HtmlWebpackPlugin({
           filename:'index.html',
           template:'./src/index.jade',//index.html
-          title:'Index',
+          title:'React Demo',
           chunks: ['index']//指定要加入的entry实例
-        }),
-        new HtmlWebpackPlugin({
-            filename:'libs/index.html',
-            template:'./src_lib/index.jade',//index.html
-            title:'Library Index',
-            chunks: ['index_lib']
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"'
@@ -72,8 +49,10 @@ var config = {
                 reload: false
             }
         ),
-       // new webpack.HotModuleReplacementPlugin()
+       new webpack.HotModuleReplacementPlugin()
     ]
 };
 
-module.exports = config;
+Object.assign(WebpackCfg,config);
+
+module.exports = WebpackCfg;

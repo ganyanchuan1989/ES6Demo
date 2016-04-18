@@ -1,6 +1,8 @@
 /**
  * Created by KJ on 2016/3/10.
  */
+var WebpackCfg = require('./webpack.common.config.js');
+
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,17 +26,10 @@ var config = {
         path: __dirname+"/dist/libs/test",
         filename:'test.js'
     },
-  // externals: {'react': 'React', 'react-dom': 'ReactDOM','HelloLib':'HelloLib'},
-    module: {
-        loaders: [
-            { test: /\.(js|jsx)$/, loader: "babel" , exclude: /node_modules/},
-            { test: /\.(js|jsx)$/, loader: "eslint", exclude: /node_modules/},
-            { test: /\.jade$/, loader: "jade" },
-            { test: /\.css$/, loader: 'style-loader!css-loader'},
-            { test: /\.less$/, loader:'style-loader!css-loader!less-loader' },
-            { test: /\.json$/, loader: 'file-loader?name=./json/[name].json' },
-            { test: /\.(png|jpg|jpeg|gif)$/, loader: 'url-loader?limit=10000' }
-        ]
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        'HelloLib':'HelloLib'
     },
     plugins: [
         new webpack.NoErrorsPlugin(),
@@ -53,4 +48,6 @@ var config = {
     ]
 };
 
-module.exports = config;
+Object.assign(WebpackCfg,config);
+
+module.exports = WebpackCfg;

@@ -39,5 +39,5 @@ LinkButton.propTypes = {
     style: PropTypes.object
 };
 
-module.exports = LinkButton;
+export default LinkButton;
 
