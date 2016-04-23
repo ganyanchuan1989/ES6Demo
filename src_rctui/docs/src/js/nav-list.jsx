@@ -14,18 +14,14 @@ class NavList extends Component {
   }
 
   getClasses (name, path) {
-    //console.log(this.context);
     return classnames(name, {
-      active:this.context.router.isActive(path)
-      //active: this.context.history.isActive(path)
+      active: this.context.router.isActive(path)
     });
   }
 
   pathChange (path) {
-    //if (!this.context.history.isActive(path)) {
     if (!this.context.router.isActive(path)) {
-      this.context.router.push(null, path);
-      //this.context.history.pushState(null, path);
+      this.context.router.push(path)
     }
   }
 
@@ -75,7 +71,7 @@ NavList.propTypes = {
 };
 
 NavList.contextTypes = {
-  router: React.PropTypes.object
+  router: React.PropTypes.object.isRequired
 };
 
-export default NavList;
+export default  NavList;

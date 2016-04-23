@@ -8,6 +8,8 @@ global.uiRequire = function (src) {
   }
 };
 
+console.log(123)
+
 import ReactDOM from 'react-dom';
 const AppRoutes = require('./app-routes.jsx');
 

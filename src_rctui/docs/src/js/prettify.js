@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default function prettify (Component) {
+module.exports = function prettify (Component) {
   class Prettify extends React.Component {
     constructor (props) {
       super(props);

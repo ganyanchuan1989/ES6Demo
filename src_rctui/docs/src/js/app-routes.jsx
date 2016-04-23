@@ -1,10 +1,11 @@
 "use strict";
 
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import {Route, Router,browserHistory} from 'react-router';
 import Master from './pages/master.jsx';
 import Home from './pages/home.jsx';
-//import { createHashHistory } from 'history'
-//const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
+import createHistory from 'history/lib/createHashHistory';
+
+const history = createHistory({ queryKey: false });
 let menulist = [];
 
 function addMenu(list) {
